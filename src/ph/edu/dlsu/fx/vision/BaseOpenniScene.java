@@ -49,7 +49,7 @@ public abstract class BaseOpenniScene {
     // create top menu
     public abstract void createHMenu();
 
-    public abstract void onCameraFrame(Mat frame);
+    public abstract void onCaptureFrame(Mat frame);
 
     public void startCamera() {
 
@@ -108,13 +108,13 @@ public abstract class BaseOpenniScene {
         if (this.capture.isOpened()) {
             try {
                 // read the current frame
-                this.capture.read(frame);
+                // this.capture.read(frame);
 
                 // if the frame is not empty, process it
-                if (!frame.empty()) {
+                if (this.capture.grab()) {
 
                     // process frame here:
-                    onCameraFrame(frame);
+                    onCaptureFrame(frame);
 
                     // convert the Mat object (OpenCV) to Image (JavaFX)
                     imageToShow = Utils.mat2Image(frame);

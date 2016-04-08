@@ -16,11 +16,18 @@ import ph.edu.dlsu.fx.vision.BaseOpenniScene;
  */
 public class BSECheckScene extends BaseOpenniScene {
 
+    final static int CV_CAP_OPENNI_DEPTH_MAP = 0; // Depth values in mm (CV_16UC1)
+    final static int CV_CAP_OPENNI_POINT_CLOUD_MAP = 1; // XYZ in meters (CV_32FC3)
+    final static int CV_CAP_OPENNI_DISPARITY_MAP = 2; // Disparity in pixels (CV_8UC1)
+    final static int CV_CAP_OPENNI_DISPARITY_MAP_32F = 3; // Disparity in pixels (CV_32FC1)
+    final static int CV_CAP_OPENNI_VALID_DEPTH_MASK = 4; // CV_8UC1
+    final static int CV_CAP_OPENNI_BGR_IMAGE = 5;
+    final static int CV_CAP_OPENNI_GRAY_IMAGE = 6;
+    private int OUTPUT_MODE = CV_CAP_OPENNI_BGR_IMAGE; // default mode
     private double scaleFactor = 0.05;
 
     @Override
     public Parent createContent() {
-
 
         // Create Main Menu pane
         Pane rootNode = new Pane();
@@ -49,27 +56,37 @@ public class BSECheckScene extends BaseOpenniScene {
 
     @Override
     public void createHMenu() {
-        final CustomMenuItem home = new CustomMenuItem("HOME", menuWidth, menuHeight);
-        final CustomMenuItem start = new CustomMenuItem("START", menuWidth, menuHeight);
-        final CustomMenuItem training = new CustomMenuItem("TRAINING", menuWidth, menuHeight);
-        final CustomMenuItem help = new CustomMenuItem("HELP", menuWidth, menuHeight);
-        final CustomMenuItem about = new CustomMenuItem("ABOUT", menuWidth, menuHeight);
+        final CustomMenuItem homeMenu = new CustomMenuItem("HOME", menuWidth, menuHeight);
+        final CustomMenuItem rgbMenu = new CustomMenuItem("RGB", menuWidth, menuHeight);
+        final CustomMenuItem grayMenu = new CustomMenuItem("GRAY", menuWidth, menuHeight);
+        final CustomMenuItem depthMenu = new CustomMenuItem("DEPTH", menuWidth, menuHeight);
+        final CustomMenuItem disparityMenu = new CustomMenuItem("DISPARITY", menuWidth, menuHeight);
         final CustomMenuItem exit = new CustomMenuItem("EXIT", menuWidth, menuHeight);
 
         // handle menu events
-        home.setOnMouseClicked(e -> {
+        homeMenu.setOnMouseClicked(e -> {
             stopCamera();
             App.onHome();
         });
 
-        start.setOnMouseClicked(e -> {
-
+        rgbMenu.setOnMouseClicked(e -> {
+            OUTPUT_MODE = CV_CAP_OPENNI_BGR_IMAGE;
         });
 
-        training.setOnMouseClicked(e -> {
+        grayMenu.setOnMouseClicked(e -> {
+            OUTPUT_MODE = CV_CAP_OPENNI_GRAY_IMAGE;
+        });
 
-                }
-        );
+        depthMenu.setOnMouseClicked(e ->
+        {
+            OUTPUT_MODE = CV_CAP_OPENNI_DEPTH_MAP;
+        });
+
+
+        disparityMenu.setOnMouseClicked(e ->
+        {
+            OUTPUT_MODE = CV_CAP_OPENNI_DISPARITY_MAP;
+        });
 
         exit.setOnMouseClicked(e -> {
             Boolean confirmQuit = App.onExit();
@@ -80,11 +97,11 @@ public class BSECheckScene extends BaseOpenniScene {
         });
 
         menuBox = new MenuHBox(
-                home,
-                start,
-                training,
-                help,
-                about,
+                homeMenu,
+                rgbMenu,
+                grayMenu,
+                depthMenu,
+                disparityMenu,
                 exit);
 
         menuBox.setTranslateX((displayWidth - 6 * menuWidth) / 2.0);
@@ -93,12 +110,17 @@ public class BSECheckScene extends BaseOpenniScene {
     }
 
     @Override
-    public void onCameraFrame(Mat frame) {
-        frame.convertTo( frame, CvType.CV_8UC1, scaleFactor );
+    public void onCaptureFrame(Mat frame) {
+
+        capture.retrieve(frame, OUTPUT_MODE);
+
+        if (OUTPUT_MODE == CV_CAP_OPENNI_DEPTH_MAP) {
+            frame.convertTo(frame, CvType.CV_8UC1, scaleFactor);
+        }
     }
 
     @Override
-    public void stopCamera(){
+    public void stopCamera() {
         super.stopCamera();
     }
 }

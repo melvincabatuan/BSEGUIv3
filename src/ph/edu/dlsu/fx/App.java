@@ -88,7 +88,6 @@ public class App extends Application {
         final CustomMenuItem demo =    new CustomMenuItem("DEMO");
         final CustomMenuItem tutorial = new CustomMenuItem("TUTORIAL");
         final CustomMenuItem visual =   new CustomMenuItem("VISUAL");
-        final CustomMenuItem tactile =  new CustomMenuItem("TACTILE");
         final CustomMenuItem help =     new CustomMenuItem("HELP");
         final CustomMenuItem exit =     new CustomMenuItem("EXIT");
 
@@ -98,7 +97,6 @@ public class App extends Application {
         demo.setOnMouseClicked(e-> onDemo());
         tutorial.setOnMouseClicked(e -> onTutorial());
         visual.setOnMouseClicked(e -> onVisual());
-        tactile.setOnMouseClicked(e -> onTactile());
         help.setOnMouseClicked(e -> onHelp());
         exit.setOnMouseClicked(e -> onExit());
 
@@ -108,7 +106,6 @@ public class App extends Application {
                 demo,
                 tutorial,
                 visual,
-                tactile,
                 help,
                 exit);
 
