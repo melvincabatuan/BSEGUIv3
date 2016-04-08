@@ -2,11 +2,11 @@
 
 -Integrated depth
 
-![cap](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-03-12%2008_45_50.png)
+![cap](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-08%2014:33:32.png)
 
-![cap](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-03-12%2017_12_22.png)
+![cap](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-08%2015:19:09.png)
 
-![cap](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-03-12%2017_12_45.png)
+![cap](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-08%2015:19:13.png)
 
 
 
