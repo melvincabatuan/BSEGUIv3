@@ -8,6 +8,18 @@
 
 ![cap](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-08%2015:19:13.png)
 
+![](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-08%2020:40:16.png)
+
+![](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-08%2020:41:03.png)
+
+![](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-08%2020:41:20.png)
+
+![](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-08%2020:41:29.png)
+
+![](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-08%2020:41:34.png)
+
+![](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-08%2020:41:41.png)
+
 
 
 # BSEGUI v2
