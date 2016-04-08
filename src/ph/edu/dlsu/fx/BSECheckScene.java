@@ -16,7 +16,7 @@ import ph.edu.dlsu.fx.vision.BaseOpenniScene;
  */
 public class BSECheckScene extends BaseOpenniScene {
 
-    private double scaleFactor = 0.05f;
+    private double scaleFactor = 0.05;
 
     @Override
     public Parent createContent() {
