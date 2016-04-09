@@ -3,12 +3,13 @@ package ph.edu.dlsu.fx;
 import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.imgproc.Imgproc;
 import ph.edu.dlsu.fx.ui.CustomMenuItem;
 import ph.edu.dlsu.fx.ui.MenuHBox;
 import ph.edu.dlsu.fx.utils.Utils;
-import ph.edu.dlsu.fx.vision.BaseOpenniScene;
 
 
 /**
@@ -25,9 +26,16 @@ public class BSECheckScene extends BaseOpenniScene {
     final static int CV_CAP_OPENNI_GRAY_IMAGE = 6;
     private int OUTPUT_MODE = CV_CAP_OPENNI_BGR_IMAGE; // default mode
     private double scaleFactor = 0.05;
+    private Mat mIntermediate;
+
 
     @Override
     public Parent createContent() {
+
+        System.out.println(Core.getBuildInformation());
+
+        // Initialize intermediate matrix
+        mIntermediate = new Mat();
 
         // Create Main Menu pane
         Pane rootNode = new Pane();
@@ -85,7 +93,8 @@ public class BSECheckScene extends BaseOpenniScene {
 
         disparityMenu.setOnMouseClicked(e ->
         {
-            OUTPUT_MODE = CV_CAP_OPENNI_DISPARITY_MAP;
+            //OUTPUT_MODE = CV_CAP_OPENNI_DISPARITY_MAP;
+            OUTPUT_MODE = CV_CAP_OPENNI_DISPARITY_MAP_32F;
         });
 
         exit.setOnMouseClicked(e -> {
@@ -115,12 +124,30 @@ public class BSECheckScene extends BaseOpenniScene {
         capture.retrieve(frame, OUTPUT_MODE);
 
         if (OUTPUT_MODE == CV_CAP_OPENNI_DEPTH_MAP) {
-            frame.convertTo(frame, CvType.CV_8UC1, scaleFactor);
+            applyColor(frame);
         }
+
+        if (OUTPUT_MODE == CV_CAP_OPENNI_DISPARITY_MAP_32F) {
+            applyColor(frame);
+        }
+    }
+
+    private void applyColor(Mat frame){
+        Core.MinMaxLocResult minMax = Core.minMaxLoc(frame);
+        double min = minMax.minVal;
+        double max = minMax.maxVal;
+
+        double scale = 255 / (max-min);
+
+        frame.convertTo(mIntermediate, CvType.CV_8UC1, scale, -min*scale);
+        Imgproc.applyColorMap(mIntermediate, frame, Imgproc.COLORMAP_JET);
     }
 
     @Override
     public void stopCamera() {
+        if (mIntermediate != null) {
+            mIntermediate.release();
+        }
         super.stopCamera();
     }
 }
