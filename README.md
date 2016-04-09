@@ -1,6 +1,27 @@
 # BSEGUI v3 (new)
 
--Integrated depth
+-integrated depth (4/8/2016)
+-added color map (4/9/2016)
+
+![](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-09%2016:32:55.png)
+
+![](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-09%2016:32:59.png)
+
+![](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-09%2016:33:04.png)
+
+![](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-09%2016:33:10.png)
+
+![](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-09%2016:33:16.png)
+
+![](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-09%2016:34:28.png)
+
+![](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-09%2016:37:07.png)
+
+![](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-09%2016:37:18.png)
+
+![](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-09%2016:37:38.png)
+
+![](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-09%2016:37:42.png)
 
 ![cap](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-08%2014:33:32.png)
 
