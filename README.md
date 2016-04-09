@@ -1,7 +1,7 @@
 # BSEGUI v3 (new)
 
--integrated depth (4/8/2016)
--added color map (4/9/2016)
+- integrated depth (4/8/2016)
+- added color map (4/9/2016)
 
 ![](https://github.com/melvincabatuan/BSEGUIv3/blob/master/capture/Screenshot%20from%202016-04-09%2016:32:55.png)
 
